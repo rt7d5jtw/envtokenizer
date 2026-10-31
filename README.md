@@ -2,7 +2,7 @@
 
 ### About
 
-An ECMAScript 3 compliant environment string tokenizer for deserializing raw environment variable text into a standard **JavaScript Object**. It reads key-value pairs from any given string, making it highly flexible for processing text buffers, API responses, or standard `.env` file contents.
+An ECMAScript 3 compliant environment string tokenizer for deserializing raw environment variable text into a standard **JavaScript Object**. It reads key-value pairs from any given string, for example, `.env` file.
 
 The tokenizer includes support for:
 

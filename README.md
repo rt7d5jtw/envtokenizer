@@ -1,24 +1,27 @@
-# Environment File Parser (ES3 Compliant)
+# Environment String Tokenizer (ES3 Compliant)
 
 ### About
 
-ECMAScript 3 compatible environment file parser for loading environment variables from an `.env` file into the JavaScript program or just parsing out environment variables from text. It reads key-value pairs and stores them in a standard **JavaScript Object**.
+An ECMAScript 3 compliant environment string tokenizer for deserializing raw environment variable text into a standard **JavaScript Object**. It reads key-value pairs from any given string, making it highly flexible for processing text buffers, API responses, or standard `.env` file contents.
 
-The parser includes support for:
+The tokenizer includes support for:
 
 * Handling **comments** (`#` or `;`) and whitespace.
-* **Variable expansion** (interpolation) using the `${VAR}` syntax, prioritizing variables defined within the file over the host system's environment variables.
+* **Variable expansion** (interpolation) using the `${VAR}` syntax, prioritizing variables defined within the parsed string over the host system's environment variables.
 * Parsing **multiline string values** (e.g., for RSA keys) enclosed in double quotes (`"`).
 
 ### Compatibility and Style
 
-The parser code is intentionally written using **ECMAScript 3 (ES3) syntax** (var, prototypes, plain objects) and wrapped in a Universal Module Definition (UMD) to attempt to guarantee portability across modern Node.js environments, web browsers, and legacy JavaScript engines like SpiderMonkey and Rhino.
+The lexical scanner code is intentionally written using **ECMAScript 3 (ES3) syntax** (var, prototypes, plain objects) and wrapped in a Universal Module Definition (UMD) to attempt to guarantee portability across modern Node.js environments, web browsers, and legacy JavaScript engines like SpiderMonkey and Rhino.
 
-⚠️ **Loading Environment Host Variables:** Because this module attemtps to be platform-agnostic, it does not automatically read system environment variables. This is used for interpolated strings from the existing host environment variables. To enable variable expansion using the host's environment, you must manually add them before parsing:
+⚠️ **Loading Environment Host Variables:** Because this module attempts to be platform-agnostic, it does not automatically read system environment variables. This feature is used for interpolated strings from the existing host environment variables. To enable variable expansion using the host's environment, you must manually add them before tokenizing:
 
 ```javascript
-var EnvParser = require('./lib/index.js');
-var tokenizer = new EnvParser(fileBuffer);
+var EnvTokenizer = require('./lib/index.js');
+
+// Pass any raw environment string, not necessarily a file
+var envString = "API_KEY=12345\nDB_HOST=localhost";
+var tokenizer = new EnvTokenizer(envString);
 
 // Add the host environment (Node.js example)
 tokenizer.setEnvironmentalVariables(process.env);

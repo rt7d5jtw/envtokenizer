@@ -2,7 +2,7 @@
 
 ### About
 
-EnvParser is a ES3 compatible environment file parser for loading environment variables from an `.env` file into the JavaScript program. It reads key-value pairs and stores them in a standard **JavaScript Object**.
+ECMAScript 3 compatible environment file parser for loading environment variables from an `.env` file into the JavaScript program or just parsing out environment variables from text. It reads key-value pairs and stores them in a standard **JavaScript Object**.
 
 The parser includes support for:
 

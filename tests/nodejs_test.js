@@ -75,7 +75,7 @@ try {
 var fs   = require('fs');
 var path = require('path');
 
-var EnvParser = require('../lib/index.js')
+var EnvTokenizer = require('../lib/index.js')
 
 /**
  * Synchronously reads the file through {readFileSync}
@@ -124,7 +124,7 @@ testrunner.test('Test .env parsing', function (t) {
     return;
   }
 
-  var tokenizer = new EnvParser(buffer)
+  var tokenizer = new EnvTokenizer(buffer)
   tokenizer.setEnvironmentalVariables(process.env);
 
   var env = tokenizer.tokenize()
@@ -150,7 +150,7 @@ testrunner.test('Test .env2 parsing', function (t) {
     return;
   }
 
-  var tokenizer = new EnvParser(buffer)
+  var tokenizer = new EnvTokenizer(buffer)
   tokenizer.setEnvironmentalVariables(process.env);
 
   var env = tokenizer.tokenize()
@@ -176,7 +176,7 @@ testrunner.test('Test .env3 parsing [MALFORMED ENV FILE TEST]', function (t) {
     return;
   }
 
-  var tokenizer = new EnvParser(buffer)
+  var tokenizer = new EnvTokenizer(buffer)
   tokenizer.setEnvironmentalVariables(process.env);
 
   var env = null;
